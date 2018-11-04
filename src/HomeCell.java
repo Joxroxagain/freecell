@@ -11,14 +11,17 @@ public class HomeCell extends Cell {
 	}
 	
 	public boolean canMoveToHome(Card c) {
-		if ((isEmpty()) & (c.getRank() == 1))
-			return true;
-		if (!constructor[length(constructor)].getSuit() == c.getSuit())
-			return false;
-		if (!constructor[length(constructor)].compareTo(c) == -1)
-			return false;
-		else
-			return true;
+		
+		// If empty, allow move if card rank is ace
+		if (isEmpty()) {
+			return c.getRank() == 1;
+		} 
+		// If not empty, allow move if cards match suit and rank of card is one higher than top card
+		else {
+			return topCard().getSuit() == c.getSuit()
+					&& topCard().compareTo(c) == 1;
+		}
+
 	}
 	
 
