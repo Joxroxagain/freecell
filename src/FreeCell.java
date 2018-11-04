@@ -7,11 +7,10 @@
 public class FreeCell extends Cell {
 
 	public FreeCell() {
-//		constructor
+
 	}
 
 	public boolean canMoveToFree(Cell source) {
-		return false;
-//		return constructor.isEmpty();
+		return isEmpty();
 	}
 }

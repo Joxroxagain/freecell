@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /**
  * Represents a single Tableau pile and its functionality
  * @author Joe Scott, Zach Francis, Kevin Dennin, JD Wilson
@@ -29,6 +31,34 @@ public class Tableau extends Cell {
 	    else
 	    	return true;
 	}
+	
+	public boolean canMoveFromTableau(Card c) {
+		// If card is the top card (can always move top card)
+		if (topCard().compareTo(c) == 0
+				&& topCard().getSuit() == c.getSuit())
+			return true;
+				
+		// Iterate backwards starting with top card and ending at card c
+		for (int i = cards.size() - 1; i > cards.indexOf(c); i--) {
+			Card current = cards.get(i);
+			Card next = cards.get(i - 1);
+
+			if (current.compareTo(next) == -1) {
+				// If black
+				if ((current.getSuit().toString() == "spades" || current.getSuit().toString() == "clubs"))
+					return current.getSuit().toString() == "hearts" || current.getSuit().toString() == "diamonds";
+				// If red
+				if (current.getSuit().toString() == "hearts" || current.getSuit().toString() == "diamonds") 
+					return current.getSuit().toString() == "spades" || current.getSuit().toString() == "clubs";
+			} else {
+				return false;
+			}
+		}
+		
+		return false;
+		
+	}
+
 	
 	
 	
