@@ -49,6 +49,7 @@ public class Game {
 			tableau2.add(deck.deal());
 			tableau3.add(deck.deal());
 			tableau4.add(deck.deal());
+			if (deck.isEmpty()) break;
 			tableau5.add(deck.deal());
 			tableau6.add(deck.deal());
 			tableau7.add(deck.deal());
@@ -69,16 +70,37 @@ public class Game {
 		
 	}
 
-	public boolean makeMove(Cell fromPile, Cell toPile) {
-            if(canMoveFrom(fromPile)) {
-                toPile.add(fromPile.pop());
-                return true;
-            }
-            return false;
+	public boolean makeMove(AbstractCell fromPile, AbstractCell toPile) {
+        if(canMoveFrom(fromPile)) {
+            toPile.add(fromPile.pop());
+            return true;
+        }
+        return false;
 	}
 	
-	public boolean canMoveFrom(Cell source) {
+	private boolean canMoveFrom(AbstractCell source) {
 		return source.isEmpty() || source instanceof HomeCell;
+	}
+	
+	@Override
+	public String toString() {
+
+		return "\nTableau 1\n" 
+				+ tableau1.toString()
+				+ "\nTableau 2\n"
+				+ tableau2.toString()
+				+ "\nTableau 3\n"
+				+ tableau3.toString()
+				+ "\nTableau 4\n" 
+				+ tableau4.toString()
+				+ "\nTableau 5\n" 
+				+ tableau5.toString()
+				+ "\nTableau 6\n" 
+				+ tableau6.toString()
+				+ "\nTableau 7\n" 
+				+ tableau7.toString()
+				+ "\nTableau 8\n" 
+				+ tableau8.toString();
 	}
 	
 }

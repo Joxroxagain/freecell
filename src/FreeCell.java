@@ -4,13 +4,13 @@
  * File: FreeCell.java
  */
 
-public class FreeCell extends Cell {
+public class FreeCell extends AbstractCell {
 
 	public FreeCell() {
-
+                 
 	}
 
-	public boolean canMoveToFree(Cell source) {
+	public boolean canMoveToFree(AbstractCell source) {
 		return isEmpty();
 	}
 }

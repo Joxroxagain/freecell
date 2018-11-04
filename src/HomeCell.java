@@ -4,7 +4,7 @@
  * File: HomeCell.java
  */
 
-public class HomeCell extends Cell {
+public class HomeCell extends AbstractCell {
 
 	public HomeCell() {
 		super();
@@ -18,8 +18,8 @@ public class HomeCell extends Cell {
 		} 
 		// If not empty, allow move if cards match suit and rank of card is one higher than top card
 		else {
-			return topCard().getSuit() == c.getSuit()
-					&& topCard().compareTo(c) == 1;
+			return getTopCard().getSuit() == c.getSuit()
+					&& getTopCard().compareTo(c) == 1;
 		}
 
 	}

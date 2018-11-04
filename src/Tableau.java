@@ -6,7 +6,7 @@ import java.util.Iterator;
  * File: Tableau.java
  */
 
-public class Tableau extends Cell {
+public class Tableau extends AbstractCell {
 
 	public Tableau() {
 		super();
@@ -17,7 +17,7 @@ public class Tableau extends Cell {
 	}
 	
 	public boolean canMoveToTableau(Card c) {
-		String topCardSuit = topCard().getSuit().toString();
+		String topCardSuit = getTopCard().getSuit().toString();
 		String moveCardSuit = c.getSuit().toString();
 		
 		if ((topCardSuit == "spades" || topCardSuit == "clubs") 
@@ -26,7 +26,7 @@ public class Tableau extends Cell {
 		if ((topCardSuit== "hearts" || topCardSuit == "diamonds") 
 				&& (moveCardSuit == "hearts" || moveCardSuit == "diamonds"))
 			return false;
-	    if (!(topCard().compareTo(c) == 1))
+	    if (!(getTopCard().compareTo(c) == 1))
 	    	return false;
 	    else
 	    	return true;
@@ -34,8 +34,8 @@ public class Tableau extends Cell {
 	
 	public boolean canMoveFromTableau(Card c) {
 		// If card is the top card (can always move top card)
-		if (topCard().compareTo(c) == 0
-				&& topCard().getSuit() == c.getSuit())
+		if (getTopCard().compareTo(c) == 0
+				&& getTopCard().getSuit() == c.getSuit())
 			return true;
 				
 		// Iterate backwards starting with top card and ending at card c
@@ -58,8 +58,6 @@ public class Tableau extends Cell {
 		return false;
 		
 	}
-
-	
 	
 	
 }

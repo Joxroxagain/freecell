@@ -23,9 +23,9 @@ public class Card implements Comparable<Card>{
     	this.suit = suit;
     	this.rank = rank;
     	faceUp = false;
-    	image = getImageFromFile(rank, suit);
-    	if (CARD_BACK == null)
-    		CARD_BACK = getBackFromFile();
+//    	image = getImageFromFile(rank, suit);
+//    	if (CARD_BACK == null)
+//    		CARD_BACK = getBackFromFile();
     }
 
     /**

@@ -39,17 +39,17 @@ public class Deck{
      * @throws IllegalStateException if the deck is empty
      */
     public Card deal(){
-	if (isEmpty())
-	    throw new IllegalStateException("Deck is empty");
-	else
-	    return deck.remove(deck.size() - 1);
+		if (isEmpty())
+		    throw new IllegalStateException("Deck is empty");
+		else
+		    return deck.remove(deck.size() - 1);
     }
 
     /**
      * Arranges the deck's cards in random order.
      */
     public void shuffle(){
-	Collections.shuffle(deck);
+    	Collections.shuffle(deck);
     }
 
     /**
@@ -57,9 +57,9 @@ public class Deck{
      * @return the string representations of the deck's cards
      */
     public String toString(){
-	String result = "";
-	for (Card c : deck)
-	    result += c + "\n";
-	return result;
+		String result = "";
+		for (Card c : deck)
+		    result += c + "\n";
+		return result;
     }
 }
