@@ -7,17 +7,38 @@
 
 public class Game {
 
+	private Deck deck;
+	
+	private Tableau tableau1;
+	private Tableau tableau2;
+	private Tableau tableau3;
+	private Tableau tableau4;
+	private Tableau tableau5;
+	private Tableau tableau6;
+	private Tableau tableau7;
+	private Tableau tableau8;
+	
+	private FreeCell freeCell1;
+	private FreeCell freeCell2;
+	private FreeCell freeCell3;
+	private FreeCell freeCell4;
+	
+	private HomeCell homeCell1;
+	private HomeCell homeCell2;
+	private HomeCell homeCell3;
+	private HomeCell homeCell4;
+
 	public Game() {
 	    // Create deck and empty tableau cells
-		Deck deck = new Deck();
-		Tableau tableau1 = new Tableau();
-		Tableau tableau2 = new Tableau();
-		Tableau tableau3 = new Tableau();
-		Tableau tableau4 = new Tableau();
-		Tableau tableau5 = new Tableau();
-		Tableau tableau6 = new Tableau();
-		Tableau tableau7 = new Tableau();
-		Tableau tableau8 = new Tableau();
+		deck = new Deck();
+		tableau1 = new Tableau();
+		tableau2 = new Tableau();
+		tableau3 = new Tableau();
+		tableau4 = new Tableau();
+		tableau5 = new Tableau();
+		tableau6 = new Tableau();
+		tableau7 = new Tableau();
+		tableau8 = new Tableau();
 		
 		// Shuffle the deck
 		deck.shuffle();
@@ -35,16 +56,16 @@ public class Game {
 		}
 		
 		// Create the four free cells
-		FreeCell freeCell1 = new FreeCell();
-		FreeCell freeCell2 = new FreeCell();
-		FreeCell freeCell3 = new FreeCell();
-		FreeCell freeCell4 = new FreeCell();
+		freeCell1 = new FreeCell();
+		freeCell2 = new FreeCell();
+		freeCell3 = new FreeCell();
+		freeCell4 = new FreeCell();
 		
 		// Create four home cells
-		HomeCell homeCell1 = new HomeCell();
-		HomeCell homeCell2 = new HomeCell();
-		HomeCell homeCell3 = new HomeCell();
-		HomeCell homeCell4 = new HomeCell();
+		homeCell1 = new HomeCell();
+		homeCell2 = new HomeCell();
+		homeCell3 = new HomeCell();
+		homeCell4 = new HomeCell();
 		
 	}
 
