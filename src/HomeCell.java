@@ -10,8 +10,14 @@ public class HomeCell extends AbstractCell {
 		super();
 	}
 	
-	public boolean canMoveToHome(Card c) {
-		
+
+	@Override
+	public boolean canRemoveFrom(Card c) {
+		return false;
+	}
+
+	@Override
+	public boolean canAddTo(Card c) {
 		// If empty, allow move if card rank is ace
 		if (isEmpty()) {
 			return c.getRank() == 1;
@@ -21,7 +27,6 @@ public class HomeCell extends AbstractCell {
 			return getTopCard().getSuit() == c.getSuit()
 					&& getTopCard().compareTo(c) == 1;
 		}
-
 	}
 	
 

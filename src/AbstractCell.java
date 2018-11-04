@@ -32,16 +32,7 @@ public abstract class AbstractCell extends AbstractCollection<Card> implements C
 	public boolean isEmpty() {
 	    return false;
 	}
-	
-    public boolean canRemoveFrom(Card c) {
-		return false;
-    }
-    
-    public boolean canAddTo(Card c) {
-		return false;
-    }
 
-	
     @Override
 	public String toString() {
     	String s = "";

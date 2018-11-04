@@ -10,7 +10,13 @@ public class FreeCell extends AbstractCell {
                  
 	}
 
-	public boolean canMoveToFree(AbstractCell source) {
+	@Override
+	public boolean canRemoveFrom(Card c) {
+		return true;
+	}
+
+	@Override
+	public boolean canAddTo(Card c) {
 		return isEmpty();
 	}
 }

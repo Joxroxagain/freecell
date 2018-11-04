@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 /**
  * Represents a single Tableau pile and its functionality
  * @author Joe Scott, Zach Francis, Kevin Dennin, JD Wilson
@@ -16,23 +14,9 @@ public class Tableau extends AbstractCell {
 		return cards.add(c);
 	}
 	
-	public boolean canMoveToTableau(Card c) {
-		String topCardSuit = getTopCard().getSuit().toString();
-		String moveCardSuit = c.getSuit().toString();
-		
-		if ((topCardSuit == "spades" || topCardSuit == "clubs") 
-				&& (moveCardSuit == "spades" || moveCardSuit == "clubs"))
-			return false;
-		if ((topCardSuit== "hearts" || topCardSuit == "diamonds") 
-				&& (moveCardSuit == "hearts" || moveCardSuit == "diamonds"))
-			return false;
-	    if (!(getTopCard().compareTo(c) == 1))
-	    	return false;
-	    else
-	    	return true;
-	}
-	
-	public boolean canMoveFromTableau(Card c) {
+
+	@Override
+	public boolean canRemoveFrom(Card c) {
 		// If card is the top card (can always move top card)
 		if (getTopCard().compareTo(c) == 0
 				&& getTopCard().getSuit() == c.getSuit())
@@ -56,7 +40,23 @@ public class Tableau extends AbstractCell {
 		}
 		
 		return false;
+	}
+
+	@Override
+	public boolean canAddTo(Card c) {
+		String topCardSuit = getTopCard().getSuit().toString();
+		String moveCardSuit = c.getSuit().toString();
 		
+		if ((topCardSuit == "spades" || topCardSuit == "clubs") 
+				&& (moveCardSuit == "spades" || moveCardSuit == "clubs"))
+			return false;
+		if ((topCardSuit== "hearts" || topCardSuit == "diamonds") 
+				&& (moveCardSuit == "hearts" || moveCardSuit == "diamonds"))
+			return false;
+	    if (!(getTopCard().compareTo(c) == 1))
+	    	return false;
+	    else
+	    	return true;
 	}
 	
 	
