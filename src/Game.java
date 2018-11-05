@@ -79,7 +79,41 @@ public class Game {
 	}
 	
 	private boolean canMoveFrom(AbstractCell source) {
-		return source.isEmpty() || source instanceof HomeCell;
+		return !(source.isEmpty() || source instanceof HomeCell);
+	}
+	
+	public void reset() {
+		deck = new Deck();
+		deck.shuffle();
+		tableau1.clear();
+		tableau2.clear();
+		tableau3.clear();
+		tableau4.clear();
+		tableau5.clear();
+		tableau6.clear();
+		tableau7.clear();
+		tableau8.clear();
+		freeCell1.clear();
+		freeCell2.clear();
+		freeCell3.clear();
+		freeCell4.clear();
+		homeCell1.clear();
+		homeCell2.clear();
+		homeCell3.clear();
+		homeCell4.clear();
+		
+		// Deal the cards to empty tableaux
+		while(!deck.isEmpty()) {
+			tableau1.add(deck.deal());
+			tableau2.add(deck.deal());
+			tableau3.add(deck.deal());
+			tableau4.add(deck.deal());
+			if (deck.isEmpty()) break;
+			tableau5.add(deck.deal());
+			tableau6.add(deck.deal());
+			tableau7.add(deck.deal());
+			tableau8.add(deck.deal());	
+		}
 	}
 	
 	@Override
@@ -103,4 +137,18 @@ public class Game {
 				+ tableau8.toString();
 	}
 	
+	
+	// For testing in the tester class
+	public Tableau getTableau1() {
+		return tableau1;
+	}
+	public Tableau getTableau2() {
+		return tableau1;
+	}
+	public FreeCell getFreeCell1() {
+		return freeCell1;
+	}	
+	public HomeCell getHomeCell1() {
+		return homeCell1;
+	}
 }

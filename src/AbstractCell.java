@@ -30,14 +30,14 @@ public abstract class AbstractCell extends AbstractCollection<Card> implements C
     }
     
 	public boolean isEmpty() {
-	    return false;
+	    return cards.isEmpty();
 	}
 
     @Override
 	public String toString() {
     	String s = "";
     	for (Card c: cards)
-    		s += c.toString() + ", ";
+    		s += c.toString() + " ";
 	    return s;
 	}
 	
