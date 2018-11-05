@@ -4,12 +4,11 @@
  * File: Cell.java
  */
 
-import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class AbstractCell extends AbstractCollection<Card> implements Cell {
+public abstract class AbstractCell implements Cell {
  
 	protected List<Card> cards;
 	
@@ -21,12 +20,12 @@ public abstract class AbstractCell extends AbstractCollection<Card> implements C
 		return cards.size();
 	}
 	
-    public boolean add(Card c) {
-    	return cards.add(c);
+    public void add(Card c) {
+    	cards.add(c);
     }
         
-    public boolean remove(Card c) {
-    	return cards.remove(c);
+    public void remove(Card c) {
+    	cards.remove(c);
     }
     
 	public boolean isEmpty() {

@@ -22,6 +22,7 @@ public class Tester {
 	private static HomeCell homeCell4;
 	
 	public static void main(String[] args) {
+		
 	    // Create deck and empty tableau cells
 		deck = new Deck();
 		tableau1 = new Tableau();
