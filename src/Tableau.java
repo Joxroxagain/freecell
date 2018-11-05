@@ -27,6 +27,7 @@ public class Tableau extends AbstractCell {
 			Card current = cards.get(i);
 			Card next = cards.get(i - 1);
 
+			// If current is one rank less than next
 			if (current.compareTo(next) == -1) {
 				// If black
 				if ((current.getSuit().toString() == "spades" || current.getSuit().toString() == "clubs"))
@@ -40,6 +41,7 @@ public class Tableau extends AbstractCell {
 		}
 		
 		return false;
+		
 	}
 
 	@Override
@@ -47,16 +49,15 @@ public class Tableau extends AbstractCell {
 		String topCardSuit = getTopCard().getSuit().toString();
 		String moveCardSuit = c.getSuit().toString();
 		
+		// If suit  is black
 		if ((topCardSuit == "spades" || topCardSuit == "clubs") 
 				&& (moveCardSuit == "spades" || moveCardSuit == "clubs"))
 			return false;
+		// If suit is red
 		if ((topCardSuit== "hearts" || topCardSuit == "diamonds") 
 				&& (moveCardSuit == "hearts" || moveCardSuit == "diamonds"))
 			return false;
-	    if (!(getTopCard().compareTo(c) == 1))
-	    	return false;
-	    else
-	    	return true;
+	    return getTopCard().compareTo(c) == 1;
 	}
 	
 	
