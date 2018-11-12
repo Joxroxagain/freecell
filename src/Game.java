@@ -83,11 +83,37 @@ public  class Game {
 		}
 		
 		return s;
-		
+	}	
+	
+	public final boolean hasWinner() { //Can only tell if the game is won, not if it can be won.
+	for(int i = 0; i < 4; i++) {
+		if (!(homeCells[i].getTopCard().getRank() ==  13))
+		return false;
 	}
-	
-	
-
+	return true;
+	}
+    public boolean hasLoser() {
+    	//Checks to see if freecells are empty
+    	for(int i = 0; i < 4; i++) {
+    		if (!(freeCells[i].isEmpty()))
+    				return false;
+    		//Check to see if tableau can move between each other
+    		for(int z = 0; z < 8; z++) {
+    			Card tabTopCard = tableaux[z].getTopCard();
+    		    for(int b = 0; b < 8; b++) {
+    		    	if(!tableaux[b].canAddTo(tabTopCard))
+    		    		return false;
+    		    }
+    		//Check to see if tableau can move to home 
+    		for(int k = 0; k < 8; k++) {
+    			Card topCard = tableaux[k].getTopCard();
+    			for (int j = 4; j < 4; j++){
+    				if(!homeCells[j].canAddTo(topCard))
+    					return false;
+    			}
+      		}
+    		
+    }
+}return true;
 }
-// hasWinner
-//hasLoser
+    }
