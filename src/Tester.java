@@ -25,8 +25,20 @@ public class Tester {
 		
 		//Create a game and deal out the cards to the tableaux
 		Game game = new Game();
+
+		int i = 0 % 8;
+		int mod = i % 8;
+		while(!deck.isEmpty()) {
+			tableaux[mod].add(deck.deal());
+			i++;
+			mod = i % 8; 
+		}
+		
 		// Print the game
 		System.out.println(game);
+		
+		
+		
 		
 		// Testing free cells
 		while (true)
