@@ -33,7 +33,7 @@ public class Tableau extends AbstractCell {
 			
 		}
 	
-		return true;
+		return false;
 		
 	}
 
