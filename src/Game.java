@@ -7,7 +7,7 @@ import java.util.Arrays;
  * File: Game.java
  */
 
-public  class Game {
+public class Game {
 
 	private Deck deck;
 	
