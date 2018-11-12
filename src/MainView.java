@@ -1,7 +1,5 @@
 import javax.swing.*;
 
-import CardPanel;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -22,7 +20,7 @@ public class MainView extends JFrame{
         JButton button = new JButton("Deal");
         button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                if (!game.isGameOver()) {
+                if (!game.isOver()) {
                 	game.nextMove();
                 	Card card1 = game.getCurrentCard1();
                 	Card card2 = game.getCurrentCard2();
