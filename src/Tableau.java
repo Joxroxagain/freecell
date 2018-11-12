@@ -10,8 +10,8 @@ public class Tableau extends AbstractCell {
 		super();
 	}
 
-	public boolean add(Card c) {
-		return cards.add(c);
+	public void add(Card c) {
+		cards.add(c);
 	}
 	
 
