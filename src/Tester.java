@@ -1,6 +1,16 @@
+import java.lang.reflect.Array;
+
 public class Tester {
 
 	private static Deck deck;
+	//private static Tableau[] tableauArray = { tableau1, tableau2, tableau3, tableau4, tableau5,
+	//		tableau6, tableau7, tableau8		
+	//}; 
+	//{
+	//for (int i = 0; i < tableauArray.length - 1; i++) {
+	//	tableauArray[i] = new Tableau();
+	//};
+	//}
 	
 	private static Tableau tableau1;
 	private static Tableau tableau2;
@@ -24,6 +34,9 @@ public class Tester {
 	public static void main(String[] args) {
 	    // Create deck and empty tableau cells
 		deck = new Deck();
+		
+		
+		
 		tableau1 = new Tableau();
 		tableau2 = new Tableau();
 		tableau3 = new Tableau();

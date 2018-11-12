@@ -119,7 +119,18 @@ public class Card implements Comparable<Card>{
         else if (rank == 13) return "King";
         else return "Ace";
     }
+    public boolean sameColor(Card other) {
+    	// If black
+		if ((this.getSuit().toString() == "spades" || this.getSuit().toString() == "clubs"))
+			return other.getSuit().toString() == "spades" || other.getSuit().toString() == "clubs";
+		// If red
+		if (this.getSuit().toString() == "hearts" || this.getSuit().toString() == "diamonds") 
+			return other.getSuit().toString() == "hearts" || other.getSuit().toString() == "diamonds";
+		return false ;
+	} 
     
-    
+    public boolean greaterByOne(Card other) {
+    	return this.compareTo(other) == 1;
+    }
     
 }

@@ -25,7 +25,7 @@ public class HomeCell extends AbstractCell {
 		// If not empty, allow move if cards match suit and rank of card is one higher than top card
 		else {
 			return getTopCard().getSuit() == c.getSuit()
-					&& getTopCard().compareTo(c) == 1;
+					&& c.greaterByOne(getTopCard());
 		}
 	}
 	
