@@ -13,16 +13,16 @@ public class Deck{
      * Creates a new deck with 52 cards in sorted order.
      */
     public Deck(){
-	deck = new ArrayList<Card>();
-	addSuit(Suit.spade);
-	addSuit(Suit.heart);
-	addSuit(Suit.diamond);
-	addSuit(Suit.club);
+		deck = new ArrayList<Card>();
+		addSuit(Suit.spade);
+		addSuit(Suit.heart);
+		addSuit(Suit.diamond);
+		addSuit(Suit.club);
     }
 
     private void addSuit(Suit suit){
-	for (int i = 1; i <= 13; i++)
-	    deck.add(new Card(suit, i));
+		for (int i = 1; i <= 13; i++)
+		    deck.add(new Card(suit, i));
     }
 
     /**
@@ -30,7 +30,7 @@ public class Deck{
      * @return true if the deck is empty
      */
     public boolean isEmpty(){
-	return deck.size() == 0;
+    	return deck.size() == 0;
     }
 
     /**

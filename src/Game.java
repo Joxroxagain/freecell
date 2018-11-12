@@ -55,13 +55,16 @@ public class Game {
 		deck = new Deck();
 		deck.shuffle();
 		
+		// Reset tableaux
 	    for(int i = 0; i < 8; i++) {
 	    	tableaux[i].clear();
-	    	    }
+	    }
+	   
+	    // Reset freeCells and homeCells
 	    for(int i = 0; i < 4; i++) {
 	    	freeCells[i].clear();
 	    	homeCells[i].clear();
-	    	    }
+	    }
 		
 		// Deal the cards to empty tableaux
 		int i = 0 % 8;
@@ -79,24 +82,29 @@ public class Game {
 		String s = "";
 		
 		for(int i = 0; i < 8; i++) {
-			s += tableaux[i];
+			s += tableaux[i] + "\n";
 		}
 		
 		return s;
 	}	
 	
-	public final boolean hasWinner() { //Can only tell if the game is won, not if it can be won.
-	for(int i = 0; i < 4; i++) {
-		if (!(homeCells[i].getTopCard().getRank() ==  13))
-		return false;
+	public final boolean hasWinner() { 
+		//Can only tell if the game is won, not if it can be won.
+		for(int i = 0; i < 4; i++) {
+			if (!(homeCells[i].getTopCard().getRank() ==  13))
+			return false;
+		}
+		
+		return true;
 	}
-	return true;
-	}
+	
     public boolean hasLoser() {
     	//Checks to see if freecells are empty
     	for(int i = 0; i < 4; i++) {
+    		
     		if (!(freeCells[i].isEmpty()))
     				return false;
+    		
     		//Check to see if tableau can move between each other
     		for(int z = 0; z < 8; z++) {
     			Card tabTopCard = tableaux[z].getTopCard();
@@ -104,16 +112,35 @@ public class Game {
     		    	if(!tableaux[b].canAddTo(tabTopCard))
     		    		return false;
     		    }
-    		//Check to see if tableau can move to home 
-    		for(int k = 0; k < 8; k++) {
-    			Card topCard = tableaux[k].getTopCard();
-    			for (int j = 4; j < 4; j++){
-    				if(!homeCells[j].canAddTo(topCard))
-    					return false;
-    			}
-      		}
+    		    
+	    		//Check to see if tableau can move to home 
+	    		for(int k = 0; k < 8; k++) {
+	    			Card topCard = tableaux[k].getTopCard();
+	    			for (int j = 4; j < 4; j++){
+	    				if(!homeCells[j].canAddTo(topCard))
+	    					return false;
+	    			}
+	      		}
     		
+    		}
+    	}
+    	
+    	return true;
+    
     }
-}return true;
+    
+    /*
+     * Getters and setters
+     */
+
+    public FreeCell getFreeCell(int i) {
+    	return freeCells[i];
+    }
+    public HomeCell getHomeCell(int i) {
+    	return homeCells[i];
+    }
+    public Tableau getTableau(int i) {
+    	return tableaux[i];
+    }
+    
 }
-    }

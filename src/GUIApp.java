@@ -1,8 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-
 import javax.swing.JFrame;
 
 /**
@@ -11,13 +6,11 @@ import javax.swing.JFrame;
  * @author lambertk
  *
  */
-
 public class GUIApp{
 
     public static void main(String[] args){
-        final Game game = new Game();
-        final JFrame view = new MainView(game);
-        view.setLayout(new BorderLayout());
+        final Deck deck = new Deck();
+        final JFrame view = new MainView(deck);
         view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         view.setSize(200, 200);
         view.setVisible(true);

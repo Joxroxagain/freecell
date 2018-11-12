@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -10,30 +9,23 @@ import java.awt.event.*;
  */
 public class MainView extends JFrame{
 
-    private Game game;
+    private Deck deck;
 
-    public MainView(Game game){
-        this.game = game;
-        CardPanel panel1 = new CardPanel();
-        CardPanel panel2 = new CardPanel();
-
+    public MainView(Deck deck){
+        this.deck = deck;
+        SinglePane pane = new SinglePane(null);
+        
         JButton button = new JButton("Deal");
         button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-//                if (!game.isOver()) {
-//                	game.nextMove();
-//                	Card card1 = game.getCurrentCard1();
-//                	Card card2 = game.getCurrentCard2();
-//                	card1.turn();
-//                	card2.turn();
-//                	panel1.setCard(card1);
-//                	panel2.setCard(card2); 	
-//                }
+                if (! deck.isEmpty()){
+                    Card card = deck.deal();
+                    card.turn();
+                    pane.setCard(card);
+                }
             }});
         Container c = getContentPane();
-        c.add(panel1, BorderLayout.WEST);
-        c.add(panel2, BorderLayout.EAST);
-
+        c.add(pane, BorderLayout.CENTER);
         c.add(button, BorderLayout.SOUTH);
     }
 }
