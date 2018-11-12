@@ -1,6 +1,6 @@
 import java.awt.Graphics;
 
-public class SingalPanel extends AbstractPanel {
+public class SingalPanel extends AbstractPane {
 
 	
 	@Override
