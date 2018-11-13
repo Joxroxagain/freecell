@@ -20,11 +20,11 @@ public class AppView extends JFrame {
 	private SinglePane[] freeCellPanes = new SinglePane[4];
 	private SinglePane[] homeCellPanes = new SinglePane[4];
 	private StackedPane[] tableauPanes = new StackedPane[8];
-	
+
 	public AppView(Game game) {
-		
+
 		this.game = game;
-		
+
 		// Create layout and constraints objects and set the window's layout.
 		setLayout(layout);
 		constraints.anchor = GridBagConstraints.CENTER;
@@ -39,7 +39,7 @@ public class AppView extends JFrame {
 			freeCellPanes[x] = new SinglePane(null);
 			addGB(freeCellPanes[x], x, 0);
 		}
-		
+
 		constraints.insets = new Insets(0, 5, 0, 0);
 
 		// Homecells
@@ -51,17 +51,12 @@ public class AppView extends JFrame {
 		constraints.weightx = 2.0;
 		constraints.weighty = 2.0;
 		constraints.insets = new Insets(5, 5, 0, 5);
-		
+
 		// Tableaux
 		for (int x = 0; x < 8; x++) {
-			
+
 			List<Card> cards = game.getTableau(x).getCards();
 
-			// Turn over all cards
-			for (Iterator iterator = cards.iterator(); iterator.hasNext();) {
-				Card card = (Card) iterator.next();
-				card.turn();
-			}
 			tableauPanes[x] = new StackedPane(cards);
 
 			addGB(tableauPanes[x], x, 1);
@@ -84,29 +79,21 @@ public class AppView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.reset();
-				
+
 				for (int x = 0; x < 8; x++) {
-					
+
+					tableauPanes[x].repaint();
+
 					// redraw Homecells and Freecells
 					if (x < 4) {
-						freeCellPanes[x].setCard(null);
-						homeCellPanes[x].setCard(null);
-					} 
-					
-					List<Card> cards = game.getTableau(x).getCards();
-
-					// Turn over all cards
-					for (Iterator iterator = cards.iterator(); iterator.hasNext();) {
-						Card card = (Card) iterator.next();
-						card.turn();
+						freeCellPanes[x].repaint();
+						;
+						homeCellPanes[x].repaint();
+						;
 					}
-					
-					// Set tableau cards
-					tableauPanes[x].setCard(cards);
 
 				}
-				
-				
+
 			}
 		});
 	}
@@ -116,6 +103,5 @@ public class AppView extends JFrame {
 		constraints.gridy = y;
 		add(component, constraints);
 	}
-	
-	
+
 }

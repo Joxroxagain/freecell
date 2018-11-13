@@ -62,4 +62,13 @@ public class Deck{
 		    result += c + "\n";
 		return result;
     }
+
+    /**
+     * Flips over all the cards in the deck.
+     */
+    public void turnAllCards() {
+    	for (Card card : deck) {
+			card.turn();
+		}
+    }
 }
