@@ -30,14 +30,13 @@ public class AppView extends JFrame{
         	// Freecells
         	if (x < 4) {
                 constraints.insets = new Insets(0, 0, 0, 5);
-        		addGB(new JButton(), x, y);
+        		addGB(new SinglePane(null), x, y);
         	}
-        	
             
         	// Homecells
         	if (x >= 4 && x < 8) {
                 constraints.insets = new Insets(0, 5, 0, 0);
-        		addGB(new JButton(), x, y);
+        		addGB(new SinglePane(null), x, y);
         	}
 		} 
         
@@ -47,9 +46,28 @@ public class AppView extends JFrame{
         constraints.insets = new Insets(5, 5, 0, 5);
         y = 2;
         for (int x = 0; x < 8; x++) {
-    		addGB(new JButton(), x, y);
+    		addGB(new StackedPane(null), x, y);
 		} 
+        
+        constraints.weightx = 0;
+        constraints.weighty = 0;
+        constraints.insets = new Insets(5, 5, 0, 5);
+        constraints.gridheight = 1;
+        constraints.gridwidth = 2;
+        constraints.gridy = 3;
+        constraints.gridx = 3;
+        
+        JButton newGameButton = new JButton("New game");
 
+        add(newGameButton, constraints);        
+        
+        newGameButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
     }
     
     private void addGB(Component component, int x, int y) {

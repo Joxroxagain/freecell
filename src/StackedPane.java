@@ -20,7 +20,7 @@ public class StackedPane extends AbstractPane {
     	Icon image;
 
     	// Paint wireframe if list is empty
-    	if (cards.isEmpty()) {
+    	if (cards == null || cards.isEmpty()) {
     		image = Card.getBack();
     		g.setColor(Color.yellow);
     		int x = (getWidth() - image.getIconWidth()) / 2;
@@ -41,5 +41,9 @@ public class StackedPane extends AbstractPane {
 		
     }
 	
-	
+    public void setCard(Card c){
+//    	card = c;
+//    	repaint();
+    }
+    
 }

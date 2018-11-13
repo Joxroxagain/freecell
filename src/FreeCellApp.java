@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 /**
@@ -11,8 +13,9 @@ public class FreeCellApp {
     public static void main(String[] args){
         final Game game = new Game();
         final JFrame view = new AppView(game);
+        view.getContentPane().setBackground(new Color(51, 204, 51));
         view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        view.setSize(200, 200);
+        view.setSize(800, 500);
         view.setVisible(true);
     }
     
