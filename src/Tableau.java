@@ -43,6 +43,6 @@ public class Tableau extends AbstractCell {
 		   return getTopCard().greaterByOne(c);
 	   return false; 
 	}
-	
+
 	
 }

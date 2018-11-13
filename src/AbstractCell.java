@@ -59,4 +59,8 @@ public abstract class AbstractCell implements Cell {
 		return cards.get(cards.size() - 1);
 	}
 	
+	public List<Card> getCards() {
+		return cards;
+	}
+	
 }

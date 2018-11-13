@@ -11,24 +11,32 @@ public class Game {
 
 	private Deck deck;
 	
-	private static Tableau[] tableaux = new Tableau[8];
-	private static FreeCell[] freeCells = new FreeCell[4];
-	private static HomeCell[] homeCells = new HomeCell[4];
+	private Tableau[] tableaux = new Tableau[8];
+	private FreeCell[] freeCells = new FreeCell[4];
+	private HomeCell[] homeCells = new HomeCell[4];
 
 	public Game() {
-	    // Create deck and empty tableau cells
+	    // Create deck
 		deck = new Deck();
-		Arrays.fill(tableaux, new Tableau());
-		// Create the four free cells
-		Arrays.fill(freeCells, new FreeCell());
-		// Create four home cells
-		Arrays.fill(homeCells, new HomeCell());
-		
 		// Shuffle the deck
 		deck.shuffle();
+			
+		// Fill tableaux array with tableaus
+		for (int i = 0; i < tableaux.length; i++) {
+			tableaux[i] = new Tableau();
+		}
 		
+		for (int i = 0; i < freeCells.length; i++) {
+			freeCells[i] = new FreeCell();
+		}
+		
+		for (int i = 0; i < homeCells.length; i++) {
+			homeCells[i] = new HomeCell();
+		}
+	
+
 		// Deal the cards to empty tableaux
-		int i = 0 % 8;
+		int i = 0;
 		int mod = i % 8;
 		while(!deck.isEmpty()) {
 			tableaux[mod].add(deck.deal());
