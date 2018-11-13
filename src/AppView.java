@@ -10,19 +10,52 @@ import java.awt.event.*;
 public class AppView extends JFrame{
 
     private Game game;
-
+    private GridBagLayout layout = new GridBagLayout();
+    private GridBagConstraints constraints = new GridBagConstraints();
+    
     public AppView(Game game){
-        this.game = game;
-        SinglePane pane1 = new SinglePane(null);
-        StackedPane pane2 = new StackedPane(null);
+    	JButton widget1 = new JButton("One");
+        JButton widget2 = new JButton("Two");
+        JButton widget3 = new JButton("Three");
 
-        JButton button = new JButton("Deal");
+        // Create layout and constraints objects and set the window's layout.
+        setLayout(layout);
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 1.0;
+        constraints.weighty = 1.0;
+        
+        int y = 0;
+        for (int x = 0; x < 8; x++) {
+        	// Freecells
+        	if (x < 4) {
+                constraints.insets = new Insets(0, 0, 0, 5);
+        		addGB(new JButton(), x, y);
+        	}
+        	
+            
+        	// Homecells
+        	if (x >= 4 && x < 8) {
+                constraints.insets = new Insets(0, 5, 0, 0);
+        		addGB(new JButton(), x, y);
+        	}
+		} 
+        
+        constraints.weightx = 2.0;
+        constraints.weighty = 2.0;
+      
+        constraints.insets = new Insets(5, 5, 0, 5);
+        y = 2;
+        for (int x = 0; x < 8; x++) {
+    		addGB(new JButton(), x, y);
+		} 
 
-        Container c = getContentPane();
-        c.add(pane1, BorderLayout.CENTER);
-        c.add(pane2, BorderLayout.EAST);
-
-        c.add(button, BorderLayout.SOUTH);
+    }
+    
+    private void addGB(Component component, int x, int y) {
+    	constraints.gridx = x;
+    	constraints.gridy = y;
+    	add(component, constraints);
     }
     
 }

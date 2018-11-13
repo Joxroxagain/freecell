@@ -36,7 +36,6 @@ public class Game {
 			mod = i % 8; 
 		}
 	
-		
 	}
 
 	public boolean makeMove(AbstractCell fromPile, AbstractCell toPile) {
