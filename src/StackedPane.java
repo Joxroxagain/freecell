@@ -41,9 +41,9 @@ public class StackedPane extends AbstractPane {
 
 	}
 
-	public void setCard(Card c) {
-		// card = c;
-		// repaint();
+	public void setCard(List<Card> c) {
+		 cards = c;
+		 repaint();
 	}
 
 }
