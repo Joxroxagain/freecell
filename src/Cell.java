@@ -6,7 +6,7 @@
 */
 import java.util.Iterator;
 
-public interface Cell extends Iterable<Card> {
+public interface Cell {
 
     /**
     * Determines the number of Card objects in a Cell
@@ -25,6 +25,12 @@ public interface Cell extends Iterable<Card> {
     * @param Card c - the Card object to be removed
     */
     public void remove(Card c);
+    
+    /**
+    * Determines if a cell is empty or not
+    * @return boolean of whether cell is empty
+    */
+    public boolean isEmpty();
 
     /**
     * Determines if a Card object can be removed from a Cell
