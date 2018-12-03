@@ -6,7 +6,7 @@
 */
 import java.util.Iterator;
 
-public interface Cell {
+public interface Cell extends Iterator<Card> {
 
     /**
     * Determines the number of Card objects in a Cell
