@@ -144,13 +144,13 @@ public class Game {
      * Getters and setters
      */
 
-    public FreeCell getFreeCell(int i) {
+    public Cell getFreeCell(int i) {
     	return freeCells[i];
     }
-    public HomeCell getHomeCell(int i) {
+    public Cell getHomeCell(int i) {
     	return homeCells[i];
     }
-    public Tableau getTableau(int i) {
+    public Cell getTableau(int i) {
     	return tableaux[i];
     }
     
