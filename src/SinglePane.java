@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Icon;
 
@@ -8,8 +10,9 @@ public class SinglePane extends AbstractPane {
 	private Card card;
 	
 	public SinglePane(Card card) {
-		super();
-		this.card = card;
+		super(cards);
+		ArrayList<Card> cards = new ArrayList<Card>();
+		cards.add(card);
 	}
 
 	@Override

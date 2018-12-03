@@ -7,11 +7,8 @@ import javax.swing.Icon;
 
 public class StackedPane extends AbstractPane {
 
-	private List<Card> cards;
-
-	public StackedPane(List<Card> cards) {
-		super();
-		this.cards = cards;
+	public StackedPane(Cell cell) {
+		super(cell);
 	}
 
 	@Override
@@ -20,24 +17,25 @@ public class StackedPane extends AbstractPane {
 		Icon image;
 
 		// Paint wireframe if list is empty
-		if (cards == null || cards.isEmpty()) {
+		if (cell.isEmpty()) {
 			image = Card.getBack();
 			g.setColor(Color.yellow);
 			int x = (getWidth() - image.getIconWidth()) / 2;
 			int y = 0;
 			g.drawRect(x, y, image.getIconWidth(), image.getIconHeight());
-
 			return;
 		}
 
+		int i = 0;
 		// Iterate over the cards and paint each one
-		for (int i = 0; i < cards.size(); i++) {
-			Card card = cards.get(i);
-			image = card.getImage();
+		for (Card c : cell) {
+			image = c.getImage();
 			int x = (getWidth() - image.getIconWidth()) / 2;
 			int y = 0 + (25 * i);
 			image.paintIcon(this, g, x, y);
+			i++;
 		}
+	
 
 	}
 

@@ -11,9 +11,9 @@ public class Game {
 
 	private Deck deck;
 	
-	private Tableau[] tableaux = new Tableau[8];
-	private FreeCell[] freeCells = new FreeCell[4];
-	private HomeCell[] homeCells = new HomeCell[4];
+	private Cell[] tableaux = new Cell[8];
+	private Cell[] freeCells = new Cell[4];
+	private Cell[] homeCells = new Cell[4];
 
 	public Game() {
 	    // Create deck
