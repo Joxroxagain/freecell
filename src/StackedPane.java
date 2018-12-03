@@ -15,7 +15,7 @@ public class StackedPane extends AbstractPane {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Icon image;
-
+		
 		// Paint wireframe if list is empty
 		if (cell.isEmpty()) {
 			image = Card.getBack();
