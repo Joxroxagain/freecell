@@ -11,12 +11,12 @@ import java.util.List;
  * @author lambertk
  *
  */
-public class AppView extends JFrame {
+public class AppView  extends JFrame {
 
 	private Game game;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints constraints = new GridBagConstraints();
-
+	private Cell fromPanel = null;
 	private SinglePane[] freeCellPanes = new SinglePane[4];
 	private SinglePane[] homeCellPanes = new SinglePane[4];
 	private StackedPane[] tableauPanes = new StackedPane[8];
