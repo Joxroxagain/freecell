@@ -9,8 +9,8 @@ public class SinglePane extends AbstractPane {
 
 	private Card card;
 	
-	public SinglePane(Card card) {
-		super(cards);
+	public SinglePane(Cell cell) {
+		super(cell);
 		ArrayList<Card> cards = new ArrayList<Card>();
 		cards.add(card);
 	}

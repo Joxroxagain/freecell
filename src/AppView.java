@@ -51,9 +51,9 @@ public class AppView extends JFrame {
 		// Tableaux
 		for (int x = 0; x < 8; x++) {
 
-			List<Card> cards = game.getTableau(x).getCards();
+			Cell cell = game.getTableau(x);
 
-			tableauPanes[x] = new StackedPane(cards);
+			tableauPanes[x] = new StackedPane(cell);
 
 			addGB(tableauPanes[x], x, 2);
 		}
