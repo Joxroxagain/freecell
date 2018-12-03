@@ -20,6 +20,8 @@ public class Game {
 		deck = new Deck();
 		// Shuffle the deck
 		deck.shuffle();
+		// Flip over all cards
+		deck.turnAllCards();
 			
 		// Fill tableaux array with tableaus
 		for (int i = 0; i < tableaux.length; i++) {
@@ -61,7 +63,9 @@ public class Game {
 	public void reset() {
 		deck = new Deck();
 		deck.shuffle();
-		
+		// Flip over all cards
+		deck.turnAllCards();
+			
 		// Reset tableaux
 	    for(int i = 0; i < 8; i++) {
 	    	tableaux[i].clear();

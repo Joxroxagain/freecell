@@ -17,10 +17,13 @@ public class AppView extends JFrame {
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints constraints = new GridBagConstraints();
 
+	private SinglePane[] freeCellPanes = new SinglePane[4];
+	private SinglePane[] homeCellPanes = new SinglePane[4];
+	private StackedPane[] tableauPanes = new StackedPane[8];
+
 	public AppView(Game game) {
-		JButton widget1 = new JButton("One");
-		JButton widget2 = new JButton("Two");
-		JButton widget3 = new JButton("Three");
+
+		this.game = game;
 
 		// Create layout and constraints objects and set the window's layout.
 		setLayout(layout);
@@ -28,58 +31,77 @@ public class AppView extends JFrame {
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.weightx = 1.0;
 		constraints.weighty = 1.0;
+		constraints.insets = new Insets(0, 0, 0, 0);
 
-		int y = 0;
-		for (int x = 0; x < 8; x++) {
-			// Freecells
-			if (x < 4) {
-				constraints.insets = new Insets(0, 0, 0, 5);
-				addGB(new SinglePane(null), x, y);
-			}
+		// Freecells
+		for (int x = 0; x < 4; x++) {
+			freeCellPanes[x] = new SinglePane(null);
+			addGB(freeCellPanes[x], x, 1);
+		}
 
-			// Homecells
-			if (x >= 4 && x < 8) {
-				constraints.insets = new Insets(0, 5, 0, 0);
-				addGB(new SinglePane(null), x, y);
-			}
+		// Homecells
+		for (int x = 0; x < 4; x++) {
+			homeCellPanes[x] = new SinglePane(null);
+			addGB(homeCellPanes[x], x + 4, 1);
 		}
 
 		constraints.weightx = 2.0;
 		constraints.weighty = 2.0;
 
-		constraints.insets = new Insets(5, 5, 0, 5);
-		y = 2;
+		// Tableaux
 		for (int x = 0; x < 8; x++) {
+
 			List<Card> cards = game.getTableau(x).getCards();
 
-			// Turn over all cards
-			for (Iterator iterator = cards.iterator(); iterator.hasNext();) {
-				Card card = (Card) iterator.next();
-				card.turn();
-			}
+			tableauPanes[x] = new StackedPane(cards);
 
-			addGB(new StackedPane(cards), x, y);
+			addGB(tableauPanes[x], x, 2);
 		}
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
-		constraints.insets = new Insets(5, 5, 0, 5);
 		constraints.gridheight = 1;
 		constraints.gridwidth = 2;
-		constraints.gridy = 3;
-		constraints.gridx = 3;
 
 		JButton newGameButton = new JButton("New game");
+		newGameButton.setPreferredSize(new Dimension(0,30));
 
-		add(newGameButton, constraints);
+		addGB(newGameButton, 3, 3);
 
 		newGameButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				game.reset();
+
+				for (int x = 0; x < 8; x++) {
+
+					// Redraw tableaux
+					tableauPanes[x].repaint();
+
+					// redraw Homecells and Freecells
+					if (x < 4) {
+						freeCellPanes[x].repaint();
+						homeCellPanes[x].repaint();
+					}
+
+				}
 
 			}
 		});
+		
+		constraints.gridwidth = 3;
+		
+		JLabel freeCellLabel = new JLabel();
+		freeCellLabel.setText("Free cells");
+		freeCellLabel.setPreferredSize(new Dimension(0,20));
+		addGB(freeCellLabel, 2, 0);
+		
+		JLabel homeCellLabel = new JLabel();
+		homeCellLabel.setText("Home cells");
+		homeCellLabel.setPreferredSize(new Dimension(0,20));
+		addGB(homeCellLabel, 5, 0);
+		
 	}
 
 	private void addGB(Component component, int x, int y) {
@@ -87,4 +109,5 @@ public class AppView extends JFrame {
 		constraints.gridy = y;
 		add(component, constraints);
 	}
+
 }
