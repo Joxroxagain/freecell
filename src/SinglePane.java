@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.Icon;
 
-public class SinglePane extends AbstractPane {
+public class SinglePane extends AbstractPane implements ViewInformer  {
 
 	private Card card;
 	
@@ -37,5 +37,11 @@ public class SinglePane extends AbstractPane {
     	card = c;
     	repaint();
     }
+
+	@Override
+	public void panelPressed(Cell panel) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

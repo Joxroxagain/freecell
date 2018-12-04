@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.Icon;
 
-public class StackedPane extends AbstractPane {
+public class StackedPane extends AbstractPane implements ViewInformer {
 
 	public StackedPane(Cell cell) {
 		super(cell);
@@ -37,6 +37,12 @@ public class StackedPane extends AbstractPane {
 		}
 	
 
+	}
+
+	@Override
+	public void panelPressed(Cell panel) {
+		// TODO Auto-generated method stub
+		
 	}
 
 //	public void setCard(List<Card> c) {

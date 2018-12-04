@@ -3,7 +3,7 @@ import java.util.List;
 
 import javax.swing.JLayeredPane;
 
-public abstract class AbstractPane extends JLayeredPane {
+public abstract class AbstractPane extends JLayeredPane implements ViewInformer {
 	
 	protected Cell cell;
 	
@@ -15,5 +15,8 @@ public abstract class AbstractPane extends JLayeredPane {
     public Cell getCell() {
     	return cell;
     }
+   
+
+
     
 }

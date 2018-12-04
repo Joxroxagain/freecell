@@ -11,7 +11,7 @@ import java.util.List;
  * @author lambertk
  *
  */
-public class AppView  extends JFrame {
+public class AppView  extends JFrame implements MouseListener{
 
 	private Game game;
 	private GridBagLayout layout = new GridBagLayout();
@@ -22,7 +22,7 @@ public class AppView  extends JFrame {
 	private StackedPane[] tableauPanes = new StackedPane[8];
 
 	public AppView(Game game) {
-
+	    this.addMouseListener(this);
 		this.game = game;
 
 		// Create layout and constraints objects and set the window's layout.
@@ -108,6 +108,41 @@ public class AppView  extends JFrame {
 		constraints.gridx = x;
 		constraints.gridy = y;
 		add(component, constraints);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	if (fromPanel == null) {
+		fromPanel = (Cell) e.getSource();
+	}
+	if (int getClickCount() % 2 == 0) {
+		fromPanel = null;
+	}
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
