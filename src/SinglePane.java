@@ -1,16 +1,17 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Icon;
 
-public class SinglePane extends AbstractPane implements ViewInformer  {
+public class SinglePane extends AbstractPane implements ViewInformer, MouseListener  {
 
 	private Card card;
 	
-	public SinglePane(Cell cell) {
-		super(cell);
+	public SinglePane(Cell cell, ViewInformer avi) {
+		super(cell, avi);
 		ArrayList<Card> cards = new ArrayList<Card>();
 		cards.add(card);
 	}
@@ -37,11 +38,5 @@ public class SinglePane extends AbstractPane implements ViewInformer  {
     	card = c;
     	repaint();
     }
-
-	@Override
-	public void panelPressed(Cell panel) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

@@ -1,14 +1,16 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.Icon;
 
-public class StackedPane extends AbstractPane implements ViewInformer {
+public class StackedPane extends AbstractPane implements ViewInformer, MouseListener {
 
-	public StackedPane(Cell cell) {
-		super(cell);
+	public StackedPane(Cell cell, ViewInformer avi) {
+		super(cell, avi);
 	}
 
 	@Override
@@ -17,7 +19,7 @@ public class StackedPane extends AbstractPane implements ViewInformer {
 		Icon image;
 		
 		// Paint wireframe if list is empty
-		if (cell.isEmpty()) {
+		if (cell == null || cell.isEmpty()) {
 			image = Card.getBack();
 			g.setColor(Color.yellow);
 			int x = (getWidth() - image.getIconWidth()) / 2;
@@ -39,11 +41,6 @@ public class StackedPane extends AbstractPane implements ViewInformer {
 
 	}
 
-	@Override
-	public void panelPressed(Cell panel) {
-		// TODO Auto-generated method stub
-		
-	}
 
 //	public void setCard(List<Card> c) {
 //		 cards = c;

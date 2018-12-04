@@ -11,10 +11,12 @@ import java.util.List;
  * @author lambertk
  *
  */
-public class AppView  extends JFrame implements MouseListener{
+public class AppView  extends JFrame {
 
 	// Game instance variable
 	private Game game;
+	
+	private AppViewInformer appViewInformer;
 	
 	// Layout variables
 	private GridBagLayout layout = new GridBagLayout();
@@ -30,12 +32,11 @@ public class AppView  extends JFrame implements MouseListener{
 
 	public AppView(Game game) {
 		
-		// Adds mouse listener
-		this.addMouseListener(this);
-		
 		// Sets game variable 
 		this.game = game;
 
+		// Instantiate appViewInformer
+		appViewInformer = new AppViewInformer();
 		// Create layout and constraints objects and set the window's layout.
 		setLayout(layout);
 		constraints.anchor = GridBagConstraints.CENTER;
@@ -46,13 +47,13 @@ public class AppView  extends JFrame implements MouseListener{
 
 		// Freecells
 		for (int x = 0; x < 4; x++) {
-			freeCellPanes[x] = new SinglePane(null);
+			freeCellPanes[x] = new SinglePane(null, appViewInformer);
 			addGB(freeCellPanes[x], x, 1);
 		}
 
 		// Homecells
 		for (int x = 0; x < 4; x++) {
-			homeCellPanes[x] = new SinglePane(null);
+			homeCellPanes[x] = new SinglePane(null, appViewInformer);
 			addGB(homeCellPanes[x], x + 4, 1);
 		}
 
@@ -64,7 +65,7 @@ public class AppView  extends JFrame implements MouseListener{
 
 			Cell cell = game.getTableau(x);
 
-			tableauPanes[x] = new StackedPane(cell);
+			tableauPanes[x] = new StackedPane(cell, appViewInformer);
 
 			addGB(tableauPanes[x], x, 2);
 		}
@@ -124,38 +125,18 @@ public class AppView  extends JFrame implements MouseListener{
 		add(component, constraints);
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		if (fromPanel == null) {
-			fromPanel = (Cell) e.getSource();
+
+	// Private class that overrides ViewInformer to receive the 
+	// panelPressed method
+	private class AppViewInformer implements ViewInformer {
+
+		@Override
+		public void panelPressed(Cell panel) {
+
+			
 		}
-		if (e.getClickCount() % 2 == 0) {
-			fromPanel = null;
-		}
+	
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }
