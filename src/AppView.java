@@ -112,13 +112,12 @@ public class AppView  extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	if (fromPanel == null) {
-		fromPanel = (Cell) e.getSource();
-	}
-	if (int getClickCount() % 2 == 0) {
-		fromPanel = null;
-	}
-		
+		if (fromPanel == null) {
+			fromPanel = (Cell) e.getSource();
+		}
+		if (e.getClickCount() % 2 == 0) {
+			fromPanel = null;
+		}
 	}
 
 	@Override
