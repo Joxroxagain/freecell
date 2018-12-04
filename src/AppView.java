@@ -11,32 +11,33 @@ import java.util.List;
  * @author lambertk
  *
  */
-public class AppView  extends JFrame {
+public class AppView extends JFrame {
 
 	// Game instance variable
 	private Game game;
-	
+
 	private AppViewInformer appViewInformer;
-	
+
 	// Layout variables
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints constraints = new GridBagConstraints();
-	
+
 	// Tracks first panel that is clicked
-	private Cell fromPanel = null;
-	
+	private AbstractPane fromPane = null;
+
 	// Panes
 	private SinglePane[] freeCellPanes = new SinglePane[4];
 	private SinglePane[] homeCellPanes = new SinglePane[4];
 	private StackedPane[] tableauPanes = new StackedPane[8];
 
 	public AppView(Game game) {
-		
-		// Sets game variable 
+
+		// Sets game variable
 		this.game = game;
 
 		// Instantiate appViewInformer
 		appViewInformer = new AppViewInformer();
+
 		// Create layout and constraints objects and set the window's layout.
 		setLayout(layout);
 		constraints.anchor = GridBagConstraints.CENTER;
@@ -77,7 +78,7 @@ public class AppView  extends JFrame {
 
 		// Create new game button
 		JButton newGameButton = new JButton("New game");
-		newGameButton.setPreferredSize(new Dimension(0,30));
+		newGameButton.setPreferredSize(new Dimension(0, 30));
 
 		addGB(newGameButton, 3, 3);
 
@@ -103,20 +104,20 @@ public class AppView  extends JFrame {
 
 			}
 		});
-		
+
 		constraints.gridwidth = 3;
-		
+
 		// Add labels for home and free cells
 		JLabel freeCellLabel = new JLabel();
 		freeCellLabel.setText("Free cells");
-		freeCellLabel.setPreferredSize(new Dimension(0,20));
+		freeCellLabel.setPreferredSize(new Dimension(0, 20));
 		addGB(freeCellLabel, 2, 0);
-		
+
 		JLabel homeCellLabel = new JLabel();
 		homeCellLabel.setText("Home cells");
-		homeCellLabel.setPreferredSize(new Dimension(0,20));
+		homeCellLabel.setPreferredSize(new Dimension(0, 20));
 		addGB(homeCellLabel, 5, 0);
-		
+
 	}
 
 	private void addGB(Component component, int x, int y) {
@@ -125,18 +126,24 @@ public class AppView  extends JFrame {
 		add(component, constraints);
 	}
 
-
-	// Private class that overrides ViewInformer to receive the 
+	// Private class that overrides ViewInformer to receive the
 	// panelPressed method
 	private class AppViewInformer implements ViewInformer {
 
 		@Override
-		public void panelPressed(Cell panel) {
+		public void panelPressed(AbstractPane pane) {
 
-			
+			if (fromPane == null) {
+				fromPane = pane;
+			} else {
+				game.makeMove((AbstractCell) fromPane.getCell(), (AbstractCell) pane.getCell());
+				fromPane.repaint();
+				pane.repaint();
+				fromPane = null;
+			}
+
 		}
-	
+
 	}
 
-	
 }

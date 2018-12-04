@@ -6,10 +6,10 @@ import java.util.List;
 
 import javax.swing.Icon;
 
-public class SinglePane extends AbstractPane implements ViewInformer, MouseListener  {
+public class SinglePane extends AbstractPane implements ViewInformer, MouseListener {
 
 	private Card card;
-	
+
 	public SinglePane(Cell cell, ViewInformer avi) {
 		super(cell, avi);
 		ArrayList<Card> cards = new ArrayList<Card>();
@@ -17,26 +17,26 @@ public class SinglePane extends AbstractPane implements ViewInformer, MouseListe
 	}
 
 	@Override
-    public void paintComponent(Graphics g){
-    	super.paintComponent(g);
-    	Icon image;
-    	if (card == null) {
-    		image = Card.getBack();
-    		g.setColor(Color.yellow);
-    		int x = (getWidth() - image.getIconWidth()) / 2;
-    		int y = (getHeight() - image.getIconHeight()) / 2;
-    		g.drawRect(x, y, image.getIconWidth(), image.getIconHeight());
-    	} else {
-    		image = card.getImage();
-    		int x = (getWidth() - image.getIconWidth()) / 2;
-    		int y = (getHeight() - image.getIconHeight()) / 2;
-    		image.paintIcon(this, g, x, y);
-    	}
-    }
-	
-    public void setCard(Card c){
-    	card = c;
-    	repaint();
-    }
-	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Icon image;
+		if (card == null) {
+			image = Card.getBack();
+			g.setColor(Color.yellow);
+			int x = (getWidth() - image.getIconWidth()) / 2;
+			int y = (getHeight() - image.getIconHeight()) / 2;
+			g.drawRect(x, y, image.getIconWidth(), image.getIconHeight());
+		} else {
+			image = card.getImage();
+			int x = (getWidth() - image.getIconWidth()) / 2;
+			int y = (getHeight() - image.getIconHeight()) / 2;
+			image.paintIcon(this, g, x, y);
+		}
+	}
+
+	public void setCard(Card c) {
+		card = c;
+		repaint();
+	}
+
 }

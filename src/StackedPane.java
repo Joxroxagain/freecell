@@ -17,7 +17,7 @@ public class StackedPane extends AbstractPane implements ViewInformer, MouseList
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Icon image;
-		
+
 		// Paint wireframe if list is empty
 		if (cell == null || cell.isEmpty()) {
 			image = Card.getBack();
@@ -37,14 +37,12 @@ public class StackedPane extends AbstractPane implements ViewInformer, MouseList
 			image.paintIcon(this, g, x, y);
 			i++;
 		}
-	
 
 	}
 
-
-//	public void setCard(List<Card> c) {
-//		 cards = c;
-//		 repaint();
-//	}
+	// public void setCard(List<Card> c) {
+	// cards = c;
+	// repaint();
+	// }
 
 }
