@@ -13,16 +13,27 @@ import java.util.List;
  */
 public class AppView  extends JFrame implements MouseListener{
 
+	// Game instance variable
 	private Game game;
+	
+	// Layout variables
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints constraints = new GridBagConstraints();
+	
+	// Tracks first panel that is clicked
 	private Cell fromPanel = null;
+	
+	// Panes
 	private SinglePane[] freeCellPanes = new SinglePane[4];
 	private SinglePane[] homeCellPanes = new SinglePane[4];
 	private StackedPane[] tableauPanes = new StackedPane[8];
 
 	public AppView(Game game) {
-	    this.addMouseListener(this);
+		
+		// Adds mouse listener
+		this.addMouseListener(this);
+		
+		// Sets game variable 
 		this.game = game;
 
 		// Create layout and constraints objects and set the window's layout.
@@ -63,11 +74,13 @@ public class AppView  extends JFrame implements MouseListener{
 		constraints.gridheight = 1;
 		constraints.gridwidth = 2;
 
+		// Create new game button
 		JButton newGameButton = new JButton("New game");
 		newGameButton.setPreferredSize(new Dimension(0,30));
 
 		addGB(newGameButton, 3, 3);
 
+		// Action listener for new game button
 		newGameButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -92,6 +105,7 @@ public class AppView  extends JFrame implements MouseListener{
 		
 		constraints.gridwidth = 3;
 		
+		// Add labels for home and free cells
 		JLabel freeCellLabel = new JLabel();
 		freeCellLabel.setText("Free cells");
 		freeCellLabel.setPreferredSize(new Dimension(0,20));
