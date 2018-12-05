@@ -48,13 +48,15 @@ public class AppView extends JFrame {
 
 		// Freecells
 		for (int x = 0; x < 4; x++) {
-			freeCellPanes[x] = new SinglePane(null, appViewInformer);
+			Cell cell = game.getFreeCell(x);
+			freeCellPanes[x] = new SinglePane(cell, appViewInformer);
 			addGB(freeCellPanes[x], x, 1);
 		}
 
 		// Homecells
 		for (int x = 0; x < 4; x++) {
-			homeCellPanes[x] = new SinglePane(null, appViewInformer);
+			Cell cell = game.getHomeCell(x);
+			homeCellPanes[x] = new SinglePane(cell, appViewInformer);
 			addGB(homeCellPanes[x], x + 4, 1);
 		}
 
@@ -63,11 +65,8 @@ public class AppView extends JFrame {
 
 		// Tableaux
 		for (int x = 0; x < 8; x++) {
-
 			Cell cell = game.getTableau(x);
-
 			tableauPanes[x] = new StackedPane(cell, appViewInformer);
-
 			addGB(tableauPanes[x], x, 2);
 		}
 
