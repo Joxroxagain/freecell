@@ -8,26 +8,22 @@ import javax.swing.Icon;
 
 public class SinglePane extends AbstractPane implements ViewInformer, MouseListener {
 
-	private Card card;
-
 	public SinglePane(Cell cell, ViewInformer avi) {
 		super(cell, avi);
-		ArrayList<Card> cards = new ArrayList<Card>();
-		cards.add(card);
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Icon image;
-		if (card == null) {
+		if (cell.isEmpty()) {
 			image = Card.getBack();
 			g.setColor(Color.yellow);
 			int x = (getWidth() - image.getIconWidth()) / 2;
 			int y = (getHeight() - image.getIconHeight()) / 2;
 			g.drawRect(x, y, image.getIconWidth(), image.getIconHeight());
 		} else {
-			image = card.getImage();
+			image = cell.getTopCard().getImage();
 			int x = (getWidth() - image.getIconWidth()) / 2;
 			int y = (getHeight() - image.getIconHeight()) / 2;
 			image.paintIcon(this, g, x, y);
@@ -35,7 +31,7 @@ public class SinglePane extends AbstractPane implements ViewInformer, MouseListe
 	}
 
 	public void setCard(Card c) {
-		card = c;
+		cell.add(c);
 		repaint();
 	}
 

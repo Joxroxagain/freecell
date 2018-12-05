@@ -40,9 +40,10 @@ public class StackedPane extends AbstractPane implements ViewInformer, MouseList
 
 	}
 
-	// public void setCard(List<Card> c) {
-	// cards = c;
-	// repaint();
-	// }
+	 public void setCard(List<Card> c) {
+		 for (Card card : c)
+			 cell.add(card);
+		 repaint();
+	 }
 
 }

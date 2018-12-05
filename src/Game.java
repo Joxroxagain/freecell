@@ -48,7 +48,8 @@ public class Game {
 	}
 
 	public boolean makeMove(AbstractCell fromPile, AbstractCell toPile) {
-		if (canMoveFrom(fromPile)) {
+		if (canMoveFrom(fromPile) &&
+				toPile.canAddTo(fromPile.getTopCard())) {
 			toPile.add(fromPile.pop());
 			return true;
 		}
