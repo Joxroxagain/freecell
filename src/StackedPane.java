@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -6,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.Icon;
+import javax.swing.JLayeredPane;
 
 public class StackedPane extends AbstractPane implements ViewInformer, MouseListener {
 
@@ -31,9 +33,13 @@ public class StackedPane extends AbstractPane implements ViewInformer, MouseList
 		int i = 0;
 		// Iterate over the cards and paint each one
 		for (Card c : cell) {
+			JLayeredPane layeredPane = new JLayeredPane();
 			image = c.getImage();
 			int x = (getWidth() - image.getIconWidth()) / 2;
 			int y = 0 + (25 * i);
+			layeredPane.setPreferredSize(new Dimension(x, y));
+			layeredPane.addMouseListener(this);
+			layeredPane.setBackground(Color.RED);
 			image.paintIcon(this, g, x, y);
 			i++;
 		}

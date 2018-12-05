@@ -24,6 +24,9 @@ public class AppView extends JFrame {
 
 	// Tracks first panel that is clicked
 	private AbstractPane fromPane = null;
+	
+	//instance variable of a list of cards in tableau 
+	private List<Card> tablist = new ArrayList<Card>();  
 
 	// Panes
 	private SinglePane[] freeCellPanes = new SinglePane[4];
@@ -134,6 +137,9 @@ public class AppView extends JFrame {
 
 			if (fromPane == null) {
 				fromPane = pane;
+			if (fromPane == tableau) {// If It's a tableau
+			// Add all cards into tablist 
+			//check to see how many cards can move by iterating through the list
 			} else {
 				game.makeMove((AbstractCell) fromPane.getCell(), (AbstractCell) pane.getCell());
 				fromPane.repaint();
