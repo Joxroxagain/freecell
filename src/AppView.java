@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * The main window for dealing from a deck of cards.
@@ -24,9 +25,9 @@ public class AppView extends JFrame {
 
 	// Tracks first panel that is clicked
 	private AbstractPane fromPane = null;
-	
-	//instance variable of a list of cards in tableau 
-	private List<Card> tablist = new ArrayList<Card>();  
+
+	// instance variable of a list of cards in tableau
+	private List<Card> tablist = new ArrayList<Card>();
 
 	// Panes
 	private SinglePane[] freeCellPanes = new SinglePane[4];
@@ -137,18 +138,23 @@ public class AppView extends JFrame {
 
 			if (fromPane == null) {
 				fromPane = pane;
-			if (fromPane == tableau) {// If It's a tableau
-			// Add all cards into tablist 
-			//check to see how many cards can move by iterating through the list
-			} else {
-				game.makeMove((AbstractCell) fromPane.getCell(), (AbstractCell) pane.getCell());
-				fromPane.repaint();
-				pane.repaint();
-				fromPane = null;
+			} else if (fromPane.getCell() instanceof Tableau) {
+
+				game.makeMultipleMoves((AbstractCell) fromPane.getCell(), (AbstractCell) pane.getCell());
+				
+//					if (fromPane == tableauPanes[i]) {// If It's a tableau
+//
+//					}
+//					// Add all cards into tablist
+//					// check to see how many cards can move by iterating through the list
+//
+//					else {
+
+//					}
+
+				
+
 			}
-
 		}
-
 	}
-
 }

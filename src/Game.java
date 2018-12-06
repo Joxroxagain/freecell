@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents the creation of a Free Cell card game and provides logic and
@@ -56,6 +57,33 @@ public class Game {
 		return false;
 	}
 
+	public boolean makeMultipleMoves(AbstractCell fromPile, AbstractCell toPile) {
+		Card bottomCard = toPile.getTopCard();
+		for (Card c : fromPile) {
+			// If card can be moved to the toPile
+			if (bottomCard.greaterByOne(c) && !bottomCard.sameColor(c)) {
+				System.out.println("HERE!");
+				// Check that all cards below can also be moved
+				System.out.println(recursiveCardComparison(fromPile.getCards(), 0, 1));
+			}
+
+		}
+		return false;
+
+	}
+
+	private boolean recursiveCardComparison(List<Card> cards, int i1, int i2) {
+		try {
+			Card c1 = cards.get(i1);
+			Card c2 = cards.get(i2);
+			if (!c1.greaterByOne(c2) || c1.sameColor(c2)) return false;
+			return recursiveCardComparison(cards, i1 + 1, i2 + 1);
+		} catch (IndexOutOfBoundsException e) {
+			return true;
+		}
+			
+	}
+	
 	private boolean canMoveFrom(AbstractCell source) {
 		return !(source.isEmpty() || source instanceof HomeCell);
 	}
