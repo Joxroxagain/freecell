@@ -76,7 +76,7 @@ public class Game {
 		try {
 			Card c1 = cards.get(i1);
 			Card c2 = cards.get(i2);
-			if (!c1.greaterByOne(c2) || c1.sameColor(c2)) return false;
+			if (!c1.greaterByOne(c2) && c1.sameColor(c2)) return false;
 			return recursiveCardComparison(cards, i1 + 1, i2 + 1);
 		} catch (IndexOutOfBoundsException e) {
 			return true;
