@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Represents a single Tableau pile and its functionality
  * 
@@ -15,26 +17,17 @@ public class Tableau extends AbstractCell {
 	}
 
 	@Override
-	public boolean canRemoveFrom(Card c) {
-		// If card is the top card (can always move top card)
-		if (getTopCard().compareTo(c) == 0 && getTopCard().getSuit() == c.getSuit()) // can
-																						// we
-																						// say
-																						// getTopcard.equals(c)?
-			return true;
-
-		// Iterate backwards starting with top card and ending at card c
-		for (int i = cards.size() - 1; i > cards.indexOf(c); i--) {
-			Card current = cards.get(i);
-			Card next = cards.get(i - 1);
-
-			// If current is one rank less than next
-			if (!next.greaterByOne(current) || next.sameColor(current))
-				return false;
-
+	public boolean canMoveFrom(Cell source) {
+		ArrayList<Card> tempList = new ArrayList<Card>();
+		for (Card c : source) {
+			tempList.add(c);
 		}
-
-		return true;
+		Card current = tempList.get(0);
+		Card next = tempList.get(1);
+		if (current.compareTo(next)) == 1 
+		}
+		
+		}
 
 	}
 
@@ -43,6 +36,11 @@ public class Tableau extends AbstractCell {
 		if (!c.sameColor(getTopCard()))
 			return getTopCard().greaterByOne(c);
 		return false;
+	}
+	
+	public boolean isOrdered(Cell source) {
+		for (Card c : source) {
+			Card current = cards.get(0)
 	}
 
 }

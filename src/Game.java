@@ -48,6 +48,7 @@ public class Game {
 
 	}
 
+	//Make a move in the game model
 	public boolean makeMove(Cell source, Cell dest) {
 			return dest.moveFrom(source);
 		}
@@ -125,7 +126,8 @@ public class Game {
 					}
 				}
 
-			}
+			} // Delete above and add method to tablue to check if cards are sorted
+			//If cards are sorted, then call method above to determine hasWinner
 		}
 
 		return true;

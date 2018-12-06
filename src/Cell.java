@@ -40,19 +40,19 @@ public interface Cell extends Iterable<Card> {
 	public boolean isEmpty();
 
 	/**
-	 * Determines if a Card object can be removed from a Cell
+	 * Determines if a Card object can be moved from a cell
 	 * 
-	 * @param Card
-	 *            c - the Card object to be removed
+	 * @param Cell source
+	 *  
 	 * @return either true or false
 	 */
 	public boolean canMoveFrom(Cell source);
 	
 	/**
-	 * Determines if a Card object can be removed from a Cell
+	 * Checks if a cards can be moved from a cell then makes move
 	 * 
-	 * @param Card
-	 *            c - the Card object to be removed
+	 * @param Cell soure
+	 * 
 	 * @return either true or false
 	 */
 	public boolean moveFrom(Cell source);
@@ -92,9 +92,9 @@ public interface Cell extends Iterable<Card> {
 	public String toString();
 	
 	/**
-	 * Creates a string representation of a Cell
+	 * Returns a card at position i
 	 * 
-	 * @return the string representation of the Card objects in a Cell
+	 * @return the card at position i
 	 */
 	public Card getCard(int i);
 	
