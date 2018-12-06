@@ -7,16 +7,12 @@
 public class FreeCell extends AbstractCell {
 
 	public FreeCell() {
+		super();
 
 	}
-
-	@Override
-	public boolean canRemoveFrom(Card c) {
-		return true;
+	
+	public boolean canMoveFrom(Cell source) {
+		return super.canMoveFrom(source) && this.isEmpty();
 	}
 
-	@Override
-	public boolean canAddTo(Card c) {
-		return isEmpty();
-	}
 }

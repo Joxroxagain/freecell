@@ -46,16 +46,16 @@ public interface Cell extends Iterable<Card> {
 	 *            c - the Card object to be removed
 	 * @return either true or false
 	 */
-	public boolean canRemoveFrom(Card c);
-
+	public boolean canMoveFrom(Cell source);
+	
 	/**
-	 * Determines if a Card object can be added to a Cell
+	 * Determines if a Card object can be removed from a Cell
 	 * 
 	 * @param Card
-	 *            c - the Card object to be added
+	 *            c - the Card object to be removed
 	 * @return either true or false
 	 */
-	public boolean canAddTo(Card c);
+	public boolean moveFrom(Cell source);
 
 	/**
 	 * Creates an iterator over the Card object
@@ -90,5 +90,12 @@ public interface Cell extends Iterable<Card> {
 	 */
 	@Override
 	public String toString();
-
+	
+	/**
+	 * Creates a string representation of a Cell
+	 * 
+	 * @return the string representation of the Card objects in a Cell
+	 */
+	public Card getCard(int i);
+	
 }

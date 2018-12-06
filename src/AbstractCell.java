@@ -64,4 +64,19 @@ public abstract class AbstractCell implements Cell {
 		return cards;
 	}
 
+	public boolean moveFrom(Cell source) {
+		if (this.canMoveFrom(source)) {
+			this.add(source.pop());
+			return true;
+		}else
+			return false;
+	}
+	
+	public boolean canMoveFrom(Cell source) {
+		return !source.isEmpty() && !(source instanceof HomeCell);
+	}
+	
+	public Card getCard(int i) {
+		return this.cards.get(i);
+	}
 }
